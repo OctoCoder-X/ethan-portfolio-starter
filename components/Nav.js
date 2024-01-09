@@ -45,7 +45,7 @@ const Nav = () => {
           <Link key={index} href={link.path}>
 
             {/* tooltip */}
-            <div className='absolute pr-14 right-0 hidden xl:group-hover:flex'>
+            <div className='absolute pr-14 right-0 hidden group-hover:flex'>
             <div className='bg-white relative flex text-primary items-center p-[6px]'>
             <div className='text-[12px]'>{link.name}</div>
               </div>
