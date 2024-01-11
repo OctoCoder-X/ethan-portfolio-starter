@@ -1,3 +1,11 @@
+// import swiper react components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// import swiper styles
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
+
 // icons
 import {
   RxCrop,
@@ -7,9 +15,11 @@ import {
   RxRocket,
 } from "react-icons/rx";
 
+// import required modules
+import { FreeMode, Pagination } from 'swiper';
 
 // data
-const serviceData = [
+export const serviceData = [
   {
     icon: <RxCrop />,
     title: 'Branding',
@@ -38,7 +48,44 @@ const serviceData = [
 ];
 
 const ServiceSlider = () => {
-  return <div>Service Slider</div>;
+  return <Swiper breakpoints={{
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 15
+    },
+
+    640: {
+      slidesPerView: 3,
+      spaceBetween: 15
+    },
+
+  }}
+  freeMode={true}
+  pagination={{
+    clickable: true
+  }}
+  modules={[FreeMode, Pagination]}
+  className='h-[240px] sm:h-[340px]'
+  >
+    {
+      serviceData.map((item,index) => {
+        return (
+        <SwiperSlide key={index}>
+          <div>
+            {/* icons */}
+            <div>{item.icon}</div>
+            {/* title & desc */}
+            <div>
+              <diV>{item.title}</diV>
+              <p>{item.description}</p>
+            </div>
+            
+          </div>
+        </SwiperSlide>
+        );
+      })
+    }
+    </Swiper>;
 };
 
 export default ServiceSlider;
